@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Weather-Wizard
+          Weather-Wizard! test
         </a>
       </header>
     </div>
