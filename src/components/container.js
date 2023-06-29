@@ -13,27 +13,16 @@ export default function Container(props) {
     console.log(location);
   }, [location]);
 
+//   pull latitude/longitude from geolocation object
+  function updateLocation(position) {
+    console.log("Latitude: " + position.coords.latitude);
+    console.log("Longitude: " + position.coords.longitude);
+    const { latitude, longitude } = position.coords;
+    setLocation({ latitude, longitude })
+  }
+
   // set location to user coords
-  const useUserLocation = () => {
-    const userLocation = getUserLocation();
-    console.log("plz: ", userLocation);
-    setLocation(userLocation);
-  };
-
-  //   set location based on user input
-  const useCustomLocation = (location) => {
-    setLocation(getCustomLocation(location));
-  };
-
-  const getWeatherData = (coords) => {
-    // api call to get weatherdata from coords
-  };
-
-  const checkLocation = () => {
-    console.log(location);
-  };
-
-  function getLocation() {
+  const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(updateLocation);
     } else {
@@ -41,12 +30,22 @@ export default function Container(props) {
     }
   }
 
-  function updateLocation(position) {
-    console.log("Latitude: " + position.coords.latitude);
-    console.log("Longitude: " + position.coords.longitude);
-    const { latitude, longitude } = position.coords;
-    setLocation({ latitude, longitude })
-  }
+  //   set location based on user input
+  const useCustomLocation = (location) => {
+    setLocation(getCustomLocation(location));
+  };
+
+//   const getWeatherData = (coords) => {
+//     // api call to get weatherdata from coords
+//   };
+
+  const checkLocation = () => {
+    console.log(location);
+  };
+
+
+
+
 
   if (location) {
     return (
