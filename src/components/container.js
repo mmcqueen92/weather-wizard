@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import {
-  getUserLocation,
   getCustomLocation,
 } from "../functions/location-functions";
 
@@ -8,10 +7,6 @@ export default function Container(props) {
   const [location, setLocation] = useState();
   const [weatherData, setWeatherData] = useState();
 
-  //   for testing purposes
-  useEffect(() => {
-    console.log(location);
-  }, [location]);
 
 //   pull latitude/longitude from geolocation object
   function updateLocation(position) {
@@ -39,12 +34,6 @@ export default function Container(props) {
 //     // api call to get weatherdata from coords
 //   };
 
-  const checkLocation = () => {
-    console.log(location);
-  };
-
-
-
 
 
   if (location) {
@@ -63,7 +52,6 @@ export default function Container(props) {
           <h5>Coords?</h5>
           <div>{location.latitude}</div>
         </div>
-        <button onClick={checkLocation}>Check Location</button>
       </div>
     );
   } else {
@@ -76,7 +64,6 @@ export default function Container(props) {
           <input type="text" id="enter_city" name="enter_city"></input>
           <button onClick={useCustomLocation}>Custom location</button>
         </div>
-        <button onClick={checkLocation}>Check Location</button>
       </div>
     );
   }
