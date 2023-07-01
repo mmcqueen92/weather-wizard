@@ -1,19 +1,16 @@
 import { useState } from "react";
-import 
-  getCustomLocation
- from "../functions/location-functions";
+import getCustomLocation from "../functions/get-custom-location";
 
 export default function Container(props) {
   const [location, setLocation] = useState();
   const [weatherData, setWeatherData] = useState();
 
-
-//   pull latitude/longitude from geolocation object
+  //   pull latitude/longitude from geolocation object
   function updateLocation(position) {
     console.log("Latitude: " + position.coords.latitude);
     console.log("Longitude: " + position.coords.longitude);
     const { latitude, longitude } = position.coords;
-    setLocation({ latitude, longitude })
+    setLocation({ latitude, longitude });
   }
 
   // set location to user coords
@@ -21,21 +18,22 @@ export default function Container(props) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(updateLocation);
     } else {
-      console.log("Geolocation is not supported by this browser.")
+      console.log("Geolocation is not supported by this browser.");
     }
-  }
+  };
 
   //   set location based on user input
   const useCustomLocation = () => {
-    
-    getCustomLocation('montreal')
+    const latLong = getCustomLocation("montreal");
+    setLocation({
+      latitude: latLong.lat,
+      longitude: latLong.long,
+    });
   };
 
-//   const getWeatherData = (coords) => {
-//     // api call to get weatherdata from coords
-//   };
-
-
+  //   const getWeatherData = (coords) => {
+  //     // api call to get weatherdata from coords
+  //   };
 
   if (location) {
     return (

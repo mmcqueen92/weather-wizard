@@ -15,7 +15,7 @@ app.get("/here", (req, res, next) => {
       `https://geocode.search.hereapi.com/v1/geocode?q=${address}&apiKey=${HERE_API_KEY}`
     )
     .then((response) => {
-      res.send(response.data);
+      res.send(response.data.items[0].position);
     })
     .catch((err) => {
       console.log("error inside the server");
