@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import {
-  getCustomLocation,
-} from "../functions/location-functions";
+import { useState } from "react";
+import 
+  getCustomLocation
+ from "../functions/location-functions";
 
 export default function Container(props) {
   const [location, setLocation] = useState();
@@ -26,8 +26,9 @@ export default function Container(props) {
   }
 
   //   set location based on user input
-  const useCustomLocation = (location) => {
-    setLocation(getCustomLocation(location));
+  const useCustomLocation = () => {
+    
+    getCustomLocation('montreal')
   };
 
 //   const getWeatherData = (coords) => {
