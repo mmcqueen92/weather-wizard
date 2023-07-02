@@ -7,8 +7,10 @@ export default function Container(props) {
 
   //   pull latitude/longitude from geolocation object
   function updateLocation(position) {
+    console.log("position: ", position)
     console.log("Latitude: " + position.coords.latitude);
     console.log("Longitude: " + position.coords.longitude);
+
     const { latitude, longitude } = position.coords;
     setLocation({ latitude, longitude });
   }
@@ -50,6 +52,7 @@ export default function Container(props) {
         <div>
           <h5>Coords?</h5>
           <div>{location.latitude}</div>
+          <div>{location.longitude}</div>
         </div>
       </div>
     );
