@@ -11,9 +11,7 @@ export default function getCustomLocation(userInput) {
     .catch((err) => {
       console.log("error: ", err)
     })
-  //temp code below
-  console.log("returned custom location");
-  return { lat: 49.246292, long: -123.116226 };
+
 };
 
 // module.exports = {

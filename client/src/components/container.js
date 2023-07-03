@@ -25,8 +25,8 @@ export default function Container(props) {
   };
 
   //   set location based on user input
-  const useCustomLocation = () => {
-    const latLong = getCustomLocation("montreal");
+  const useCustomLocation = async () => {
+    const latLong = await getCustomLocation("montreal");
     setLocation({
       latitude: latLong.lat,
       longitude: latLong.long,
