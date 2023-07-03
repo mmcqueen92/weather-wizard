@@ -24,7 +24,13 @@ export default function Container(props) {
 
   //   calls getCustomLocation to turn userinput (string) into coords that can be used by API
   const useCustomLocation = async () => {
-    const latLong = await getCustomLocation("montreal", setLocation);
+    getCustomLocation("montreal", setLocation)
+
+
+
+
+    // setLocation()
+
     // setLocation({
     //   latitude: latLong.lat,
     //   longitude: latLong.long,
@@ -35,13 +41,11 @@ export default function Container(props) {
     // api call to get weatherdata from coords
     if (location) {
       getCurrentWeather(location).then((res) => {
-        setWeatherData(res)
-      })
-      
-
-      
+        setWeatherData(res);
+      });
+    } else {
+      console.log("please select a location");
     }
-
   };
 
   if (location) {
