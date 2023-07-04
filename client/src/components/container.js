@@ -5,6 +5,7 @@ import getCurrentWeather from "../functions/get-current-weather";
 export default function Container(props) {
   const [location, setLocation] = useState();
   const [weatherData, setWeatherData] = useState();
+  const [userInput, setUserInput] = useState("")
 
   //   pull latitude/longitude from geolocation object and call setLocation to save coords in state
   function updateLocation(position) {
@@ -24,7 +25,8 @@ export default function Container(props) {
 
   //   calls getCustomLocation to turn userinput (string) into coords that can be used by API
   const useCustomLocation = () => {
-    getCustomLocation("montreal", setLocation, getWeatherData)
+    console.log("useCustomLocation called with userInput = ", userInput)
+    getCustomLocation(userInput, setLocation, getWeatherData)
   };
 
 
@@ -68,7 +70,9 @@ export default function Container(props) {
         <button onClick={getLocation}>User location</button>
         <div>
           <label htmlFor="enter_city">Enter a location</label>
-          <input type="text" id="enter_city" name="enter_city"></input>
+          <input type="text" id="enter_city" name="enter_city" value={userInput} onChange={(event) => {
+                        setUserInput(event.target.value)
+                      }}></input>
           <button onClick={useCustomLocation}>Custom location</button>
         </div>
       </div>
