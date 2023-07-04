@@ -24,7 +24,8 @@ export default function Container(props) {
   };
 
   //   calls getCustomLocation to turn userinput (string) into coords that can be used by API
-  const useCustomLocation = () => {
+  const useCustomLocation = (event) => {
+    event.preventDefault()
     console.log("useCustomLocation called with userInput = ", userInput)
     getCustomLocation(userInput, setLocation, getWeatherData)
   };
@@ -41,7 +42,7 @@ export default function Container(props) {
 
   };
 
-  if (location) {
+  if (weatherData) {
     return (
       <div>
         <h4>LOCATION SELECTED!</h4>
@@ -58,9 +59,7 @@ export default function Container(props) {
           <div>LAT: {location.latitude}</div>
           <div>LONG: {location.longitude}</div>
         </div>
-        <div>
-          <button onClick={getWeatherData}>Get Current Weather</button>
-        </div>
+
       </div>
     );
   } else {
@@ -68,13 +67,13 @@ export default function Container(props) {
       <div>
         <h4>NO LOCATION SELECTED</h4>
         <button onClick={getLocation}>User location</button>
-        <div>
+        <form onSubmit={useCustomLocation}>
           <label htmlFor="enter_city">Enter a location</label>
           <input type="text" id="enter_city" name="enter_city" value={userInput} onChange={(event) => {
                         setUserInput(event.target.value)
                       }}></input>
-          <button onClick={useCustomLocation}>Custom location</button>
-        </div>
+          <button type="submit">Custom location</button>
+        </form>
       </div>
     );
   }
