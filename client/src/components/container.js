@@ -8,7 +8,6 @@ export default function Container(props) {
 
   //   pull latitude/longitude from geolocation object and call setLocation to save coords in state
   function updateLocation(position) {
-    console.log("POSITION: ", position);
     const { latitude, longitude } = position.coords;
     setLocation({ latitude, longitude });
     getWeatherData(latitude, longitude)
@@ -28,13 +27,6 @@ export default function Container(props) {
     getCustomLocation("montreal", setLocation, getWeatherData)
   };
 
-  // const getLocAndWeather = async () => {
-
-  // }
-
-  // const useUserLocation = async () => {
-  //   getLocation()
-  // }
 
   const getWeatherData = async (lat, long) => {
     // api call to get weatherdata from coords
