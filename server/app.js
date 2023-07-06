@@ -29,7 +29,7 @@ app.get("/openweather/current", (req, res) => {
     const lat = req.query.lat
     const long = req.query.long
     axios
-        .get( `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${OW_API_KEY}`)
+        .get( `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&lang=en&appid=${OW_API_KEY}`)
         .then((response) => {
             res.send(response.data)
         })
