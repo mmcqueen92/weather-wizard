@@ -7,12 +7,21 @@ export default function Container(props) {
   const [weatherData, setWeatherData] = useState();
   const [userInput, setUserInput] = useState("");
   const [imgUrl, setImgUrl] = useState("")
-
+  const [weatherDesc, setWeatherDesc] = useState("")
+  
 
 
   useEffect(() => {
     if (weatherData) {
       setImgUrl(`https://openweathermap.org/img/wn/${weatherData.weather[0].icon || ""}@2x.png`)
+
+      const descArray = weatherData.weather[0].description.split(" ")
+      const parsedArray = descArray.map((word) => {
+       const newWord = word[0].toUpperCase() + word.substring(1)
+       return newWord;
+      })
+      const descString = parsedArray.join(" ")
+      setWeatherDesc(descString)
     }
   }, [weatherData])
 
@@ -58,13 +67,11 @@ export default function Container(props) {
         <button onClick={back}>Back</button>
         <h4>LOCATION SELECTED!</h4>
         <div>
-          <h5>Current Weather: {weatherData.weather[0].description}</h5>
+          <h5>Current Weather: {weatherDesc}</h5>
           <img src={imgUrl} alt="Weather Icon" crossOrigin="true"></img>
           <h6>Temperature: {weatherData.main.temp}</h6>
         </div>
-        <div>
-          <h5>Hours/Days</h5>
-        </div>
+
       </div>
     );
   } else {
