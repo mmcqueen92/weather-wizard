@@ -26,7 +26,6 @@ export default function Container(props) {
   //   calls getCustomLocation to turn userinput (string) into coords that can be used by API
   const useCustomLocation = (event) => {
     event.preventDefault();
-    console.log("useCustomLocation called with userInput = ", userInput);
     getCustomLocation(userInput, setLocation, getWeatherData);
   };
 
@@ -73,6 +72,7 @@ export default function Container(props) {
             onChange={(event) => {
               setUserInput(event.target.value);
             }}
+            required
           ></input>
           <button type="submit">Custom location</button>
         </form>

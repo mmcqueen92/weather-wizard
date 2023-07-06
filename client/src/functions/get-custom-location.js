@@ -4,7 +4,6 @@ export default async function getCustomLocation(userInput, setState, getData) {
   // use user input (string) to get coords
     
     const encodedUserInput = encodeURIComponent(userInput)
-    console.log("calling: ", `http://localhost:3001/here?address=${encodedUserInput}`)
     const axiosPromise = await axios.get(`http://localhost:3001/here?address=${encodedUserInput}`)
     .then((res) => {
       const latitude = res.data.lat;
