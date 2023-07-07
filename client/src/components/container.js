@@ -70,6 +70,7 @@ export default function Container(props) {
           <h5>Current Weather: {weatherDesc}</h5>
           <img src={imgUrl} alt="Weather Icon" crossOrigin="true"></img>
           <h6>Temperature: {weatherData.main.temp}</h6>
+          <h6>Humidity: {weatherData.main.humidity}%</h6>
         </div>
 
       </div>
