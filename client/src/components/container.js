@@ -66,6 +66,7 @@ export default function Container(props) {
       <div>
         <button onClick={back}>Back</button>
         <h4>LOCATION SELECTED!</h4>
+        <h5>{location.placeName}</h5>
         <div>
           <h5>Current Weather: {weatherDesc}</h5>
           <img src={imgUrl} alt="Weather Icon" crossOrigin="true"></img>
