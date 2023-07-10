@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import getCustomLocation from "../functions/get-custom-location";
 import getCurrentWeather from "../functions/get-current-weather";
+import getPlaceNameFromCoords from "../functions/get-placename-from-coords";
 
 export default function Container(props) {
   const [location, setLocation] = useState();
@@ -26,14 +27,15 @@ export default function Container(props) {
   }, [weatherData])
 
   //   pull latitude/longitude from geolocation object and call setLocation to save coords in state
-  function updateLocation(position) {
+  async function updateLocation(position) {
     const { latitude, longitude } = position.coords;
-    setLocation({ latitude, longitude });
+    const placeName = await getPlaceNameFromCoords({ latitude, longitude })
+    setLocation({coords: { latitude, longitude }, placeName: placeName.data});
     getWeatherData(latitude, longitude);
   }
 
   // uses navigator.geolocation to get user coords, calls updateLocation with the returned coords
-  const getLocation = () => {
+  const getLocation = async () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(updateLocation);
     } else {
@@ -53,7 +55,6 @@ export default function Container(props) {
 
     await getCurrentWeather(coords).then((res) => {
       setWeatherData(res);
-      console.log(res)
     });
   };
 

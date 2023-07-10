@@ -16,7 +16,7 @@ app.get("/here", (req, res) => {
       `https://geocode.search.hereapi.com/v1/geocode?q=${address}&lang=en&apiKey=${HERE_API_KEY}`
     )
     .then((response) => {
-      // console.log("response:", response.data);
+
       res.send({
         coords: response.data.items[0].position,
         placeName: response.data.items[0].title,
@@ -26,6 +26,18 @@ app.get("/here", (req, res) => {
       console.log("error inside the server");
       console.log(err);
     });
+});
+
+// returns a placename (string) from coords
+app.get("/placename", (req, res) => {
+  const lat = req.query.lat;
+  const long = req.query.long;
+  axios.get(
+    `https://revgeocode.search.hereapi.com/v1/revgeocode?at=${lat}%2C${long}&lang=en-US&apiKey=${HERE_API_KEY}`
+  ).then((response) => {
+    const placeName = response.data.items[0].address.city;
+    res.send(placeName)
+  })
 });
 
 app.get("/openweather/current", (req, res) => {
