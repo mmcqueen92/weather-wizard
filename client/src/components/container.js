@@ -54,6 +54,7 @@ export default function Container(props) {
     const coords = { latitude: lat, longitude: long };
 
     await getCurrentWeather(coords).then((res) => {
+      console.log(res)
       setWeatherData(res);
     });
   };
@@ -73,6 +74,7 @@ export default function Container(props) {
           <img src={imgUrl} alt="Weather Icon" crossOrigin="true"></img>
           <h6>Temperature: {weatherData.main.temp}</h6>
           <h6>Humidity: {weatherData.main.humidity}%</h6>
+          <h6>Wind: {weatherData.wind.speed} m/s</h6>
         </div>
 
       </div>
