@@ -6,7 +6,6 @@ export default async function getCustomLocation(userInput, setState, getData) {
     const encodedUserInput = encodeURIComponent(userInput)
     const axiosPromise = await axios.get(`http://localhost:3001/here?address=${encodedUserInput}`)
     .then((res) => {
-      console.log("res.data: ", res.data)
       const latitude = res.data.coords.lat;
       const longitude = res.data.coords.lng;
       const placeName = res.data.placeName;
@@ -15,7 +14,6 @@ export default async function getCustomLocation(userInput, setState, getData) {
       return res.data
     })
     .then((res) => {
-      console.log("line 18 res: ", res)
       const latitude = res.coords.lat;
       const longitude = res.coords.lng;
       getData(latitude, longitude)

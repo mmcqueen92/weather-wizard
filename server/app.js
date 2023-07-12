@@ -40,12 +40,28 @@ app.get("/placename", (req, res) => {
   })
 });
 
+// returns weather data from coords
 app.get("/openweather/current", (req, res) => {
   const lat = req.query.lat;
   const long = req.query.long;
   axios
     .get(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&lang=en&appid=${OW_API_KEY}`
+    )
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get("/openweather/forecast", (req, res) => {
+  const lat = req.query.lat;
+  const long = req.query.long;
+  axios
+    .get(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric&lang=en&appid=${OW_API_KEY}`
     )
     .then((response) => {
       res.send(response.data);

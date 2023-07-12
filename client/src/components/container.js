@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import getCustomLocation from "../functions/get-custom-location";
 import getCurrentWeather from "../functions/get-current-weather";
+import getForecast from "../functions/get-forecast";
 import getPlaceNameFromCoords from "../functions/get-placename-from-coords";
 
 export default function Container(props) {
@@ -54,9 +55,13 @@ export default function Container(props) {
     const coords = { latitude: lat, longitude: long };
 
     await getCurrentWeather(coords).then((res) => {
-      console.log(res)
+      console.log("weather data: ", res)
       setWeatherData(res);
     });
+
+    await getForecast(coords).then((res) => {
+      console.log("forecast data: ", res)
+    })
   };
 
   const back = () => {
