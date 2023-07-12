@@ -1,37 +1,41 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import getCustomLocation from "../functions/get-custom-location";
 import getCurrentWeather from "../functions/get-current-weather";
 import getForecast from "../functions/get-forecast";
 import getPlaceNameFromCoords from "../functions/get-placename-from-coords";
+import ForecastList from "./forecast-list"
 
 export default function Container(props) {
   const [location, setLocation] = useState();
   const [weatherData, setWeatherData] = useState();
   const [userInput, setUserInput] = useState("");
-  const [imgUrl, setImgUrl] = useState("")
-  const [weatherDesc, setWeatherDesc] = useState("")
-  
-
+  const [imgUrl, setImgUrl] = useState("");
+  const [weatherDesc, setWeatherDesc] = useState("");
+  const [forecastData, setForecastData] = useState();
 
   useEffect(() => {
     if (weatherData) {
-      setImgUrl(`https://openweathermap.org/img/wn/${weatherData.weather[0].icon || ""}@2x.png`)
+      setImgUrl(
+        `https://openweathermap.org/img/wn/${
+          weatherData.weather[0].icon || ""
+        }@2x.png`
+      );
 
-      const descArray = weatherData.weather[0].description.split(" ")
+      const descArray = weatherData.weather[0].description.split(" ");
       const parsedArray = descArray.map((word) => {
-       const newWord = word[0].toUpperCase() + word.substring(1)
-       return newWord;
-      })
-      const descString = parsedArray.join(" ")
-      setWeatherDesc(descString)
+        const newWord = word[0].toUpperCase() + word.substring(1);
+        return newWord;
+      });
+      const descString = parsedArray.join(" ");
+      setWeatherDesc(descString);
     }
-  }, [weatherData])
+  }, [weatherData]);
 
   //   pull latitude/longitude from geolocation object and call setLocation to save coords in state
   async function updateLocation(position) {
     const { latitude, longitude } = position.coords;
-    const placeName = await getPlaceNameFromCoords({ latitude, longitude })
-    setLocation({coords: { latitude, longitude }, placeName: placeName.data});
+    const placeName = await getPlaceNameFromCoords({ latitude, longitude });
+    setLocation({ coords: { latitude, longitude }, placeName: placeName.data });
     getWeatherData(latitude, longitude);
   }
 
@@ -55,20 +59,22 @@ export default function Container(props) {
     const coords = { latitude: lat, longitude: long };
 
     await getCurrentWeather(coords).then((res) => {
-      console.log("weather data: ", res)
+      console.log("weather data: ", res);
       setWeatherData(res);
     });
 
     await getForecast(coords).then((res) => {
-      console.log("forecast data: ", res)
-    })
+      console.log("forecast data: ", res);
+      setForecastData(res);
+    });
   };
+
 
   const back = () => {
     setWeatherData();
   };
 
-  if (weatherData) {
+  if (weatherData && forecastData) {
     return (
       <div>
         <button onClick={back}>Back</button>
@@ -81,7 +87,12 @@ export default function Container(props) {
           <h6>Humidity: {weatherData.main.humidity}%</h6>
           <h6>Wind: {weatherData.wind.speed} m/s</h6>
         </div>
-
+        <h5>
+          <ForecastList
+          forecastData={forecastData}
+          ></ForecastList>
+        </h5>
+        
       </div>
     );
   } else {
