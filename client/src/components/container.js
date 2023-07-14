@@ -59,12 +59,10 @@ export default function Container(props) {
     const coords = { latitude: lat, longitude: long };
 
     await getCurrentWeather(coords).then((res) => {
-      console.log("weather data: ", res);
       setWeatherData(res);
     });
 
     await getForecast(coords).then((res) => {
-      console.log("forecast data: ", res);
       setForecastData(res);
     });
   };
