@@ -95,9 +95,9 @@ export default function Container(props) {
     );
   } else {
     return (
-      <div>
+      <div className="border-2 border-blue-800 rounded-md max-w-md my-5 mx-auto">
         <h4>NO LOCATION SELECTED</h4>
-        <button onClick={getLocation}>User location</button>
+        <button onClick={getLocation} className="border-2 border-blue-800 m-1 p-1 rounded-md">User location</button>
         <form onSubmit={useCustomLocation}>
           <label htmlFor="enter_city">Enter a location</label>
           <input
@@ -108,9 +108,10 @@ export default function Container(props) {
             onChange={(event) => {
               setUserInput(event.target.value);
             }}
+            className="border-2 border-blue-800 m-1 p-1 rounded-md"
             required
           ></input>
-          <button type="submit" classname="border-2 border-blue-800 m-1 p-1 rounded-md bg-green-200">Custom location</button>
+          <button type="submit" className="border-2 border-blue-800 m-1 p-1 rounded-md">Search</button>
         </form>
       </div>
     );
