@@ -110,7 +110,7 @@ export default function Container(props) {
             }}
             required
           ></input>
-          <button type="submit">Custom location</button>
+          <button type="submit" classname="border-2 border-blue-800 m-1 p-1 rounded-md bg-green-200">Custom location</button>
         </form>
       </div>
     );
