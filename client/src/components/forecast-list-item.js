@@ -19,7 +19,7 @@ export default function ForecastListItem(props) {
   });
 
   return (
-    <div className="border-2 border-blue-800 m-1 p-1 rounded-md bg-green-200">
+    <div className="border-2 border-blue-800 m-1 p-1 rounded-md bg-green-200 max-w-xs">
       <br />
       <h4 className="underline">Forecast list item:</h4>
       <div>

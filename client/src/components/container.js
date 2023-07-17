@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationCrosshairs, faHatWizard } from "@fortawesome/free-solid-svg-icons";
 import getCustomLocation from "../functions/get-custom-location";
 import getCurrentWeather from "../functions/get-current-weather";
 import getForecast from "../functions/get-forecast";
 import getPlaceNameFromCoords from "../functions/get-placename-from-coords";
-import ForecastList from "./forecast-list"
+import ForecastList from "./forecast-list";
 
 export default function Container(props) {
   const [location, setLocation] = useState();
@@ -67,7 +69,6 @@ export default function Container(props) {
     });
   };
 
-
   const back = () => {
     setWeatherData();
   };
@@ -86,20 +87,26 @@ export default function Container(props) {
           <h6>Wind: {weatherData.wind.speed} m/s</h6>
         </div>
         <h5>
-          <ForecastList
-          forecastData={forecastData}
-          ></ForecastList>
+          <ForecastList forecastData={forecastData}></ForecastList>
         </h5>
-        
       </div>
     );
   } else {
     return (
       <div className="border-2 border-blue-800 rounded-md max-w-md my-5 mx-auto">
-        <h4>NO LOCATION SELECTED</h4>
-        <button onClick={getLocation} className="border-2 border-blue-800 m-1 p-1 rounded-md">User location</button>
+        <h3>Welcome to Weather-Wizard</h3>
+        <FontAwesomeIcon icon={faHatWizard} size="2xl" className="text-blue-800"></FontAwesomeIcon>
+        <br/>
+        <label htmlFor="user_loc">Use current location: </label>
+        <button
+          name="user_loc"
+          onClick={getLocation}
+          className="border-2 border-blue-800 m-1 p-1 rounded-md h-9 w-9 text-blue-800 hover:bg-blue-800 hover:text-slate-200"
+        >
+          <FontAwesomeIcon icon={faLocationCrosshairs}></FontAwesomeIcon>
+        </button>
         <form onSubmit={useCustomLocation}>
-          <label htmlFor="enter_city">Enter a location</label>
+          <label htmlFor="enter_city">Enter a location: </label>
           <input
             type="text"
             id="enter_city"
@@ -111,7 +118,12 @@ export default function Container(props) {
             className="border-2 border-blue-800 m-1 p-1 rounded-md"
             required
           ></input>
-          <button type="submit" className="border-2 border-blue-800 m-1 p-1 rounded-md">Search</button>
+          <button
+            type="submit"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md hover:bg-blue-800 hover:text-slate-200"
+          >
+            Search
+          </button>
         </form>
       </div>
     );
