@@ -1,3 +1,5 @@
+import titleCaseString from "../functions/title-case-string";
+
 export default function ForecastListItem(props) {
   // parse time
   const dateAndTime = props.forecast.dt_txt;
@@ -12,20 +14,25 @@ export default function ForecastListItem(props) {
   const minute = Number(time.split(":")[1]);
   const second = Number(time.split(":")[2]);
 
+  // create Date
   const utcDate = new Date(Date.UTC(year, month, day, hour, minute, second));
-  const localDate = utcDate.toLocaleString("en-US", {
-    dateStyle: "full",
-    timeStyle: "full",
-  });
+
+  // get date string
+  const dateOptions = { dateStyle: 'medium'}
+  const localDate = utcDate.toLocaleDateString('en-US', dateOptions)
+
+  // get time string
+  const localTime = utcDate.toLocaleTimeString('en-us')
+
+  const titleDesc = titleCaseString(props.forecast.weather[0].description)
 
   return (
-    <div className="border-2 border-blue-800 m-1 p-1 rounded-md bg-green-200 max-w-xs">
-      <br />
-      <h4 className="underline">Forecast list item:</h4>
+    <div className="border-2 border-blue-800 m-1 p-2 rounded-md bg-green-200 w-max">
       <div>
-        <h6>LOCAL DATE/TIME: {localDate}</h6>
+        <h6>{localDate}</h6>
+        <h6>{localTime}</h6>
         <h6>TEMP: {props.forecast.main.temp}</h6>
-        <h6>DESC: {props.forecast.weather[0].description}</h6>
+        <h6>{titleDesc}</h6>
       </div>
     </div>
   );

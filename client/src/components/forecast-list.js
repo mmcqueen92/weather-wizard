@@ -1,7 +1,9 @@
 import ForecastListItem from "./forecast-list-item";
 
 export default function ForecastList(props) {
-  const itemArray = props.forecastData.list.map((element, index) => {
+  const forecastArray = props.forecastData.list
+  const oneDayForecast = forecastArray.slice(0,8)
+  const itemArray = oneDayForecast.map((element, index) => {
     return (
       <ForecastListItem
         key={index}
@@ -11,5 +13,9 @@ export default function ForecastList(props) {
     );
   });
 
-  return <div>{itemArray}</div>;
+  return (
+  <div className="flex flex-row">
+    {itemArray}
+    </div>
+    );
 }

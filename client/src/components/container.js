@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationCrosshairs, faHatWizard } from "@fortawesome/free-solid-svg-icons";
+import {
+  faLocationCrosshairs,
+  faHatWizard,
+} from "@fortawesome/free-solid-svg-icons";
 import getCustomLocation from "../functions/get-custom-location";
 import getCurrentWeather from "../functions/get-current-weather";
 import getForecast from "../functions/get-forecast";
 import getPlaceNameFromCoords from "../functions/get-placename-from-coords";
+import titleCaseString from "../functions/title-case-string";
 import ForecastList from "./forecast-list";
 
 export default function Container(props) {
@@ -23,13 +27,8 @@ export default function Container(props) {
         }@2x.png`
       );
 
-      const descArray = weatherData.weather[0].description.split(" ");
-      const parsedArray = descArray.map((word) => {
-        const newWord = word[0].toUpperCase() + word.substring(1);
-        return newWord;
-      });
-      const descString = parsedArray.join(" ");
-      setWeatherDesc(descString);
+      const titleDesc = titleCaseString(weatherData.weather[0].description);
+      setWeatherDesc(titleDesc);
     }
   }, [weatherData]);
 
@@ -77,26 +76,34 @@ export default function Container(props) {
     return (
       <div>
         <button onClick={back}>Back</button>
-        <h4>LOCATION SELECTED!</h4>
         <h5>{location.placeName}</h5>
-        <div>
-          <h5>Current Weather: {weatherDesc}</h5>
-          <img src={imgUrl} alt="Weather Icon" crossOrigin="true"></img>
+        <div className="flex flex-col items-center">
+          <h5>{weatherDesc}</h5>
+          <img
+            src={imgUrl}
+            alt="Weather Icon"
+            crossOrigin="true"
+            className="flex h-20 w-20 bg-blue-300"
+          ></img>
           <h6>Temperature: {weatherData.main.temp}</h6>
           <h6>Humidity: {weatherData.main.humidity}%</h6>
           <h6>Wind: {weatherData.wind.speed} m/s</h6>
         </div>
-        <h5>
+        <div className="flex flex-col items-center overflow-auto">
           <ForecastList forecastData={forecastData}></ForecastList>
-        </h5>
+        </div>
       </div>
     );
   } else {
     return (
       <div className="border-2 border-blue-800 rounded-md max-w-md my-5 mx-auto">
         <h3>Welcome to Weather-Wizard</h3>
-        <FontAwesomeIcon icon={faHatWizard} size="2xl" className="text-blue-800"></FontAwesomeIcon>
-        <br/>
+        <FontAwesomeIcon
+          icon={faHatWizard}
+          size="2xl"
+          className="text-blue-800"
+        ></FontAwesomeIcon>
+        <br />
         <label htmlFor="user_loc">Use current location: </label>
         <button
           name="user_loc"
