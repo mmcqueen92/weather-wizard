@@ -21,8 +21,11 @@ export default function ForecastListItem(props) {
   const dateOptions = { dateStyle: 'medium'}
   const localDate = utcDate.toLocaleDateString('en-US', dateOptions)
 
-  // get time string
-  const localTime = utcDate.toLocaleTimeString('en-us')
+  // get time string + remove leading 0s
+  const localTime = utcDate.toLocaleTimeString('en-us', { hour: "2-digit", minute: "2-digit" })
+  const localTimeSplit = localTime.split(":")
+  localTimeSplit[0] = parseInt(localTimeSplit[0])
+  const localTimeParsed = localTimeSplit.join(":")
 
   const titleDesc = titleCaseString(props.forecast.weather[0].description)
 
@@ -30,8 +33,8 @@ export default function ForecastListItem(props) {
     <div className="border-2 border-blue-800 m-1 p-2 rounded-md bg-green-200 w-max">
       <div>
         <h6>{localDate}</h6>
-        <h6>{localTime}</h6>
-        <h6>TEMP: {props.forecast.main.temp}</h6>
+        <h6>{localTimeParsed}</h6>
+        <h6>{props.forecast.main.temp}&#8451;</h6>
         <h6>{titleDesc}</h6>
       </div>
     </div>
