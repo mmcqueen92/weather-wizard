@@ -74,7 +74,7 @@ export default function Container(props) {
 
   if (weatherData && forecastData) {
     return (
-      <div>
+      <div className="border-2 border-blue-800 rounded-md max-w-2xl my-5 mx-auto">
         <button onClick={back}>Back</button>
         <h5>{location.placeName}</h5>
         <div className="flex flex-col items-center">
@@ -89,7 +89,7 @@ export default function Container(props) {
           <h6>Humidity: {weatherData.main.humidity}%</h6>
           <h6>Wind: {weatherData.wind.speed} m/s</h6>
         </div>
-        <div className="flex flex-col items-center overflow-auto">
+        <div className="flex flex-col overflow-auto">
           <ForecastList forecastData={forecastData}></ForecastList>
         </div>
       </div>

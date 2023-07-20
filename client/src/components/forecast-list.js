@@ -14,7 +14,7 @@ export default function ForecastList(props) {
   });
 
   return (
-  <div className="flex flex-row">
+  <div className="flex flex-row w-fit">
     {itemArray}
     </div>
     );
