@@ -75,21 +75,32 @@ export default function Container(props) {
   if (weatherData && forecastData) {
     return (
       <div className="border-2 border-blue-800 rounded-md max-w-2xl my-5 mx-auto">
-        <button onClick={back}>Back</button>
-        <h5>{location.placeName}</h5>
-        <div className="flex flex-col items-center">
-          <h5>{weatherDesc}</h5>
-          <img
-            src={imgUrl}
-            alt="Weather Icon"
-            crossOrigin="true"
-            className="flex h-20 w-20 bg-blue-300"
-          ></img>
-          <h6>Temperature: {weatherData.main.temp}</h6>
-          <h6>Humidity: {weatherData.main.humidity}%</h6>
-          <h6>Wind: {weatherData.wind.speed} m/s</h6>
+        <div className="flex flex-row justify-start">
+          <button
+            onClick={back}
+            className="border-2 border-blue-800 rounded-md p-1 m-1"
+          >
+            Back
+          </button>
         </div>
-        <div className="flex flex-col overflow-auto">
+        <h5>{location.placeName}</h5>
+        <div className="flex flex-row items-center">
+          <div className="flex flex-col items-center w-1/2">
+            <h5>{weatherDesc}</h5>
+            <img
+              src={imgUrl}
+              alt="Weather Icon"
+              crossOrigin="true"
+              className="flex h-20 w-20 bg-blue-300"
+            ></img>
+          </div>
+          <div className="flex flex-col w-1/2 h-max">
+            <h6>Temperature: {weatherData.main.temp}</h6>
+            <h6>Humidity: {weatherData.main.humidity}%</h6>
+            <h6>Wind: {weatherData.wind.speed} m/s</h6>
+          </div>
+        </div>
+        <div className="flex flex-col overflow-auto mt-5">
           <ForecastList forecastData={forecastData}></ForecastList>
         </div>
       </div>

@@ -30,7 +30,7 @@ export default function ForecastListItem(props) {
   const titleDesc = titleCaseString(props.forecast.weather[0].description)
 
   return (
-    <div className="flex flex-col border-2 border-blue-800 m-1 p-2 rounded-md bg-green-200 w-36 shrink-0">
+    <div className="flex flex-col border-2 border-blue-800 m-1 p-2 rounded-md bg-blue-200 w-36 shrink-0">
       <div>
         <h6>{localDate}</h6>
         <h6>{localTimeParsed}</h6>
