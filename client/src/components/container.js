@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationCrosshairs,
   faHatWizard,
+  faArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
 import getCustomLocation from "../functions/get-custom-location";
 import getCurrentWeather from "../functions/get-current-weather";
@@ -78,9 +79,11 @@ export default function Container(props) {
         <div className="flex flex-row justify-start">
           <button
             onClick={back}
-            className="border-2 border-blue-800 rounded-md p-1"
+            className="border-2 border-blue-800 rounded-md p-1 w-9 hover:bg-blue-800"
           >
-            Back
+            <FontAwesomeIcon
+            icon={faArrowLeft}
+            ></FontAwesomeIcon>
           </button>
         </div>
         <h5>{location.placeName}</h5>
