@@ -74,11 +74,11 @@ export default function Container(props) {
 
   if (weatherData && forecastData) {
     return (
-      <div className="border-2 border-blue-800 rounded-md max-w-2xl my-5 mx-auto bg-blue-200">
+      <div className="border-2 border-blue-800 rounded-md max-w-2xl my-5 mx-auto bg-blue-200 p-1">
         <div className="flex flex-row justify-start">
           <button
             onClick={back}
-            className="border-2 border-blue-800 rounded-md p-1 m-1"
+            className="border-2 border-blue-800 rounded-md p-1"
           >
             Back
           </button>
