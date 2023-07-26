@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'lake-island': "url('/public/img/backgrounds/bg1.jpg')"
+      }
+    },
   },
   plugins: [],
 }

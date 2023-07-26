@@ -75,7 +75,7 @@ export default function Container(props) {
 
   if (weatherData && forecastData) {
     return (
-      <div className="border-2 border-blue-800 rounded-md max-w-2xl my-5 mx-auto bg-blue-200 p-1">
+      <div className="border-2 border-blue-800 rounded-md max-w-2xl mx-auto bg-blue-200 p-1">
         <div className="flex flex-row justify-start">
           <button
             onClick={back}
@@ -86,7 +86,7 @@ export default function Container(props) {
             ></FontAwesomeIcon>
           </button>
         </div>
-        <h5>{location.placeName}</h5>
+        <h5 className="font-bold text-lg">{location.placeName}</h5>
         <div className="flex flex-row items-center">
           <div className="flex flex-col items-center w-1/2">
             <h5>{weatherDesc}</h5>
