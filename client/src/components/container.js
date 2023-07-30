@@ -86,10 +86,10 @@ export default function Container(props) {
             ></FontAwesomeIcon>
           </button>
         </div>
-        <h5 className="font-bold text-lg">{location.placeName}</h5>
+        <h5 className="font-bold text-lg text-blue-800">{location.placeName}</h5>
         <div className="flex flex-row items-center">
           <div className="flex flex-col items-center w-1/2">
-            <h5>{weatherDesc}</h5>
+            <h5 className="font-medium text-blue-800">{weatherDesc}</h5>
             <img
               src={imgUrl}
               alt="Weather Icon"
@@ -97,7 +97,7 @@ export default function Container(props) {
               className="flex h-20 w-20 bg-blue-300"
             ></img>
           </div>
-          <div className="flex flex-col w-1/2 h-max">
+          <div className="flex flex-col w-1/2 h-max text-blue-800 font-medium">
             <h6>Temperature: {weatherData.main.temp}</h6>
             <h6>Humidity: {weatherData.main.humidity}%</h6>
             <h6>Wind: {weatherData.wind.speed} m/s</h6>
@@ -111,14 +111,14 @@ export default function Container(props) {
   } else {
     return (
       <div className="border-4 border-blue-800 rounded-md max-w-md mx-auto bg-blue-300 p-2">
-        <h3>Welcome to Weather-Wizard</h3>
+        <h3 className="text-blue-800 font-bold">Welcome to Weather-Wizard</h3>
         <FontAwesomeIcon
           icon={faHatWizard}
           size="2xl"
           className="text-blue-800"
         ></FontAwesomeIcon>
         <br />
-        <label htmlFor="user_loc">Use current location: </label>
+        <label htmlFor="user_loc" className="text-blue-800 font-medium">Use current location: </label>
         <button
           name="user_loc"
           onClick={getLocation}
@@ -127,11 +127,12 @@ export default function Container(props) {
           <FontAwesomeIcon icon={faLocationCrosshairs}></FontAwesomeIcon>
         </button>
         <form onSubmit={useCustomLocation}>
-          <label htmlFor="enter_city">Enter a location: </label>
+          {/* <label htmlFor="enter_city">Enter a location: </label> */}
           <input
             type="text"
             id="enter_city"
             name="enter_city"
+            placeholder="Enter a Location"
             value={userInput}
             onChange={(event) => {
               setUserInput(event.target.value);
@@ -141,7 +142,7 @@ export default function Container(props) {
           ></input>
           <button
             type="submit"
-            className="border-2 border-blue-800 m-1 p-1 rounded-md hover:bg-blue-800 hover:text-slate-200"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md hover:bg-blue-800 hover:text-slate-200 text-blue-800 font-medium"
           >
             Search
           </button>
