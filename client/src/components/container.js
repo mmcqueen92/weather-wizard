@@ -98,7 +98,7 @@ export default function Container(props) {
             ></img>
           </div>
           <div className="flex flex-col w-1/2 h-max text-blue-800 font-medium">
-            <h6>Temperature: {weatherData.main.temp}</h6>
+            <h6>Temperature: {weatherData.main.temp}&#8451;</h6>
             <h6>Humidity: {weatherData.main.humidity}%</h6>
             <h6>Wind: {weatherData.wind.speed} m/s</h6>
           </div>
