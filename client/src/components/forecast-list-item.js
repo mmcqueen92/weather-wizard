@@ -3,10 +3,11 @@ import titleCaseString from "../functions/title-case-string";
 export default function ForecastListItem(props) {
   // parse time
   const dateAndTime = props.forecast.dt_txt;
-  
+
   const date = dateAndTime.split(" ")[0];
   const year = Number(date.split("-")[0]);
-  const month = Number(date.split("-")[1]);
+  const month = Number(date.split("-")[1]) - 1;
+
   const day = Number(date.split("-")[2]);
 
   const time = dateAndTime.split(" ")[1];
@@ -16,6 +17,7 @@ export default function ForecastListItem(props) {
 
   // create Date
   const utcDate = new Date(Date.UTC(year, month, day, hour, minute, second));
+
 
   // get date string
   const dateOptions = { dateStyle: 'medium'}
