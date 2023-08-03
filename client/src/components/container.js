@@ -79,7 +79,7 @@ export default function Container(props) {
         <div className="flex flex-row justify-start">
           <button
             onClick={back}
-            className="border-2 border-blue-800 rounded-md p-1 w-9 bg-blue-800 hover:bg-blue-300 hover:text-blue-800 text-slate-200"
+            className="border-2 border-blue-800 rounded-md p-1 w-9 bg-blue-200 hover:bg-blue-800 hover:text-blue-200 text-blue-800"
           >
             <FontAwesomeIcon
             icon={faArrowLeft}
