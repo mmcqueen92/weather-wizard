@@ -122,7 +122,7 @@ export default function Container(props) {
         <button
           name="user_loc"
           onClick={getLocation}
-          className="border-2 border-blue-800 m-1 p-1 rounded-md h-9 w-9 text-blue-800 hover:bg-blue-800 hover:text-slate-200"
+          className="border-2 border-blue-800 m-1 p-1 rounded-md h-9 w-9 bg-blue-200 hover:bg-blue-800 hover:text-blue-200 text-blue-800"
         >
           <FontAwesomeIcon icon={faLocationCrosshairs}></FontAwesomeIcon>
         </button>
@@ -142,7 +142,7 @@ export default function Container(props) {
           ></input>
           <button
             type="submit"
-            className="border-2 border-blue-800 m-1 p-1 rounded-md hover:bg-blue-800 hover:text-slate-200 text-blue-800 font-medium"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-blue-200 hover:bg-blue-800 hover:text-blue-200 text-blue-800 font-medium"
           >
             Search
           </button>
