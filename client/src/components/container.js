@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationCrosshairs,
   faHatWizard,
-  faArrowLeft
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import getCustomLocation from "../functions/get-custom-location";
 import getCurrentWeather from "../functions/get-current-weather";
@@ -81,12 +81,12 @@ export default function Container(props) {
             onClick={back}
             className="border-2 border-blue-800 rounded-md p-1 w-9 bg-blue-200 hover:bg-blue-800 hover:text-blue-200 text-blue-800"
           >
-            <FontAwesomeIcon
-            icon={faArrowLeft}
-            ></FontAwesomeIcon>
+            <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
           </button>
         </div>
-        <h5 className="font-bold text-lg text-blue-800">{location.placeName}</h5>
+        <h5 className="font-bold text-lg text-blue-800">
+          {location.placeName}
+        </h5>
         <div className="flex flex-row items-center">
           <div className="flex flex-col items-center w-1/2">
             <h5 className="font-medium text-blue-800">{weatherDesc}</h5>
@@ -111,14 +111,19 @@ export default function Container(props) {
   } else {
     return (
       <div className="border-4 border-blue-800 rounded-md max-w-md mx-auto bg-blue-300 p-2">
-        <h3 className="text-blue-800 font-bold">Welcome to Weather-Wizard</h3>
-        <FontAwesomeIcon
-          icon={faHatWizard}
-          size="2xl"
-          className="text-blue-800"
-        ></FontAwesomeIcon>
+        <div className="relative">
+          <h3 className="text-blue-800 font-bold">Welcome to Weather-Wizard</h3>
+          <FontAwesomeIcon
+            icon={faHatWizard}
+            // size="3xl"
+            className="text-blue-800 absolute top-5 right-5 fa-3x"
+          ></FontAwesomeIcon>
+        </div>
+
         <br />
-        <label htmlFor="user_loc" className="text-blue-800 font-medium">Use current location: </label>
+        <label htmlFor="user_loc" className="text-blue-800 font-medium">
+          Use current location:{" "}
+        </label>
         <button
           name="user_loc"
           onClick={getLocation}
