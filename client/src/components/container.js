@@ -73,20 +73,23 @@ export default function Container(props) {
     setWeatherData();
   };
 
+  console.log("weatherdata: ", weatherData)
+
+
   if (weatherData && forecastData) {
     return (
-      <div className="border-4 border-blue-800 rounded-md max-w-2xl mx-auto bg-blue-300 p-2">
+      <div className="border-4 border-blue-800 rounded-md max-w-2xl mx-auto bg-blue-300 p-2 relative">
+        <h5 className="font-bold text-lg text-blue-800">
+          {location.placeName}
+        </h5>
         <div className="flex flex-row justify-start">
           <button
             onClick={back}
-            className="border-2 border-blue-800 rounded-md p-1 w-9 bg-blue-200 hover:bg-blue-800 hover:text-blue-200 text-blue-800"
+            className="border-2 border-blue-800 rounded-md p-1 w-9 bg-blue-200 hover:bg-blue-800 hover:text-blue-200 text-blue-800 absolute top-1 left-1"
           >
             <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
           </button>
         </div>
-        <h5 className="font-bold text-lg text-blue-800">
-          {location.placeName}
-        </h5>
         <div className="flex flex-row items-center">
           <div className="flex flex-col items-center w-1/2">
             <h5 className="font-medium text-blue-800">{weatherDesc}</h5>
