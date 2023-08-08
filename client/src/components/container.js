@@ -73,9 +73,6 @@ export default function Container(props) {
     setWeatherData();
   };
 
-  console.log("weatherdata: ", weatherData)
-
-
   if (weatherData && forecastData) {
     return (
       <div className="border-4 border-blue-800 rounded-md max-w-2xl mx-auto bg-blue-300 p-2 relative">
