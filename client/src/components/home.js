@@ -5,7 +5,7 @@ import {
   } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home(props) {
-const {getLocation, useCustomLocation, userInput, handleUserInput } = props;
+const {getLocation, useCustomLocation, userInput, handleUserInput, isLoading } = props;
 return (
     <div className="border-4 border-blue-800 rounded-md max-w-md mx-auto bg-blue-300 p-2">
         <div className="relative">
@@ -14,11 +14,12 @@ return (
             icon={faHatWizard}
             className="text-blue-800 absolute top-5 right-5 fa-3x"
           ></FontAwesomeIcon>
+          {isLoading?<div>loading</div>: <div></div>}
         </div>
 
         <br />
         <label htmlFor="user_loc" className="text-blue-800 font-medium">
-          Use current location:{" "}
+          Use current location:
         </label>
         <button
           name="user_loc"

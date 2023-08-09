@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default async function getCustomLocation(userInput, setState, getData) {
+export default async function getCustomLocation(userInput, setState) {
   // use user input (string) to get coords
     
     const encodedUserInput = encodeURIComponent(userInput)
@@ -13,19 +13,9 @@ export default async function getCustomLocation(userInput, setState, getData) {
       setState(locationData)
       return res.data
     })
-    .then((res) => {
-      const latitude = res.coords.lat;
-      const longitude = res.coords.lng;
-      getData(latitude, longitude)
-    })
     .catch((err) => {
       console.log("error: ", err)
     })
     return axiosPromise
 };
-
-// module.exports = {
-//   getCustomLocation
-// };
-
 

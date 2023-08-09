@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 function App() {
 
-  const backgrounds = ['bg-bingus', 'bg-bongus', 'bg-dingus', 'bg-dongus', 'bg-plingus', 'bg-plongus', 'bg-tringus', 'bg-trongus']
+  const backgrounds = ['bg-lake-island', 'bg-forest-green', 'bg-mountain-cottage', 'bg-clouds', 'bg-northern-lights', 'bg-mountain-lake', 'bg-northern-lights-2', 'bg-forest-light']
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);

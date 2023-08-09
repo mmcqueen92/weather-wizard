@@ -8,12 +8,18 @@ import Home from "./home";
 import Forecast from "./forecast";
 
 export default function Container(props) {
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState(null);
   const [weatherData, setWeatherData] = useState();
   const [userInput, setUserInput] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [weatherDesc, setWeatherDesc] = useState("");
   const [forecastData, setForecastData] = useState();
+
+  useEffect(() => {
+    if (location) {
+      getWeatherData(location.coords.latitude, location.coords.longitude)
+    }
+  }, [location])
 
   useEffect(() => {
     if (weatherData) {
@@ -33,7 +39,6 @@ export default function Container(props) {
     const { latitude, longitude } = position.coords;
     const placeName = await getPlaceNameFromCoords({ latitude, longitude });
     setLocation({ coords: { latitude, longitude }, placeName: placeName.data });
-    getWeatherData(latitude, longitude);
   }
 
   // uses navigator.geolocation to get user coords, calls updateLocation with the returned coords
@@ -48,7 +53,7 @@ export default function Container(props) {
   //   calls getCustomLocation to turn userinput (string) into coords that can be used by API
   const useCustomLocation = (event) => {
     event.preventDefault();
-    getCustomLocation(userInput, setLocation, getWeatherData);
+    getCustomLocation(userInput, setLocation);
   };
 
   const getWeatherData = async (lat, long) => {
@@ -73,6 +78,7 @@ export default function Container(props) {
   };
 
   if (weatherData && forecastData) {
+
     return (
       <Forecast
         placeName={location.placeName}
