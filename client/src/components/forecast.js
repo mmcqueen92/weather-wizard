@@ -11,7 +11,7 @@ export default function Forecast(props) {
       <div className="flex flex-row justify-start">
         <button
           onClick={back}
-          className="border-2 border-blue-800 rounded-md p-1 w-9 bg-blue-200 hover:bg-blue-800 hover:text-blue-200 text-blue-800 absolute top-1 left-1"
+          className="border-2 border-blue-800 rounded-md p-1 w-9 bg-blue-800 hover:bg-blue-200 hover:text-blue-800 text-blue-200 absolute top-1 left-1"
         >
           <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
         </button>
@@ -32,7 +32,7 @@ export default function Forecast(props) {
           <h6>Wind: {weatherData.wind.speed} m/s</h6>
         </div>
       </div>
-      <div className="flex flex-col overflow-auto mt-5 border-2 border-blue-800 rounded-md">
+      <div className="flex flex-col overflow-auto mt-5 border-2 border-blue-800 bg-blue-500 rounded-md shadow-xl">
         <ForecastList forecastData={forecastData}></ForecastList>
       </div>
     </div>
