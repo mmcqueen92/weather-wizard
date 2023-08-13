@@ -24,7 +24,7 @@ return (
         <button
           name="user_loc"
           onClick={getLocation}
-          className="border-2 border-blue-800 m-1 p-1 rounded-md h-9 w-9 bg-blue-800 hover:bg-blue-200 hover:text-blue-800 text-blue-200"
+          className="border-2 border-blue-800 m-1 p-1 rounded-md h-9 w-9 bg-blue-800 hover:bg-blue-200 hover:text-blue-800 text-slate-200"
         >
           <FontAwesomeIcon icon={faLocationCrosshairs}></FontAwesomeIcon>
         </button>
@@ -41,7 +41,7 @@ return (
           ></input>
           <button
             type="submit"
-            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-blue-800 hover:bg-blue-200 hover:text-blue-800 text-blue-200 font-medium"
+            className="border-2 border-blue-800 m-1 p-1 rounded-md bg-blue-800 hover:bg-blue-200 hover:text-blue-800 text-slate-200 font-medium"
           >
             Search
           </button>

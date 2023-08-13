@@ -11,7 +11,7 @@ export default function Forecast(props) {
       <div className="flex flex-row justify-start">
         <button
           onClick={back}
-          className="border-2 border-blue-800 rounded-md p-1 w-9 bg-blue-800 hover:bg-blue-200 hover:text-blue-800 text-blue-200 absolute top-1 left-1"
+          className="border-2 border-blue-800 rounded-md p-1 w-9 bg-blue-800 hover:bg-blue-200 hover:text-blue-800 text-slate-200 absolute top-1 left-1"
         >
           <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
         </button>
