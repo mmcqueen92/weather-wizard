@@ -14,12 +14,14 @@ export default function Container(props) {
   const [imgUrl, setImgUrl] = useState("");
   const [weatherDesc, setWeatherDesc] = useState("");
   const [forecastData, setForecastData] = useState();
+  const [sunsetTime, setSunsetTime] = useState("");
+  const [sunriseTime, setSunriseTime] = useState("");
 
   useEffect(() => {
     if (location) {
-      getWeatherData(location.coords.latitude, location.coords.longitude)
+      getWeatherData(location.coords.latitude, location.coords.longitude);
     }
-  }, [location])
+  }, [location]);
 
   useEffect(() => {
     if (weatherData) {
@@ -31,6 +33,26 @@ export default function Container(props) {
 
       const titleDesc = titleCaseString(weatherData.weather[0].description);
       setWeatherDesc(titleDesc);
+      // parse sunset time
+      const utcSunset = new Date(weatherData.sys.sunset * 1000);
+      const localSunset = utcSunset.toLocaleTimeString("en-us", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      const localSunsetSplit = localSunset.split(":");
+      localSunsetSplit[0] = parseInt(localSunsetSplit[0]);
+      const localSunsetParsed = localSunsetSplit.join(":");
+      setSunsetTime(localSunsetParsed);
+      // parse sunrise time
+      const utcSunrise = new Date(weatherData.sys.sunrise * 1000);
+      const localSunrise = utcSunrise.toLocaleTimeString("en-us", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      const localSunriseSplit = localSunrise.split(":");
+      localSunriseSplit[0] = parseInt(localSunriseSplit[0]);
+      const localSunriseParsed = localSunriseSplit.join(":");
+      setSunriseTime(localSunriseParsed);
     }
   }, [weatherData]);
 
@@ -78,7 +100,6 @@ export default function Container(props) {
   };
 
   if (weatherData && forecastData) {
-
     return (
       <Forecast
         placeName={location.placeName}
@@ -86,7 +107,12 @@ export default function Container(props) {
         weatherDesc={weatherDesc}
         imgUrl={imgUrl}
         weatherData={weatherData}
+        temp={weatherData.main.temp}
+        humidity={weatherData.main.humidity}
+        speed={weatherData.main.speed}
         forecastData={forecastData}
+        sunsetTime={sunsetTime}
+        sunriseTime={sunriseTime}
       />
     );
   } else {
