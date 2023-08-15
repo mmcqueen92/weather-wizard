@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ForecastList from "./forecast-list";
 
 export default function Forecast(props) {
-  const { placeName, back, weatherDesc, imgUrl, weatherData, forecastData, temp, humidity, speed, sunsetTime, sunriseTime } = props;
+  const { placeName, back, weatherDesc, imgUrl, forecastData, temp, humidity, speed, sunsetTime, sunriseTime } = props;
+
   return (
     <div className="border-4 border-blue-800 rounded-md max-w-2xl mx-auto bg-blue-300 p-2 relative">
       <h5 className="font-bold text-lg text-blue-800">{placeName}</h5>

@@ -25,6 +25,7 @@ export default function Container(props) {
 
   useEffect(() => {
     if (weatherData) {
+
       setImgUrl(
         `https://openweathermap.org/img/wn/${
           weatherData.weather[0].icon || ""
@@ -106,10 +107,9 @@ export default function Container(props) {
         back={back}
         weatherDesc={weatherDesc}
         imgUrl={imgUrl}
-        weatherData={weatherData}
         temp={weatherData.main.temp}
         humidity={weatherData.main.humidity}
-        speed={weatherData.main.speed}
+        speed={weatherData.wind.speed}
         forecastData={forecastData}
         sunsetTime={sunsetTime}
         sunriseTime={sunriseTime}
