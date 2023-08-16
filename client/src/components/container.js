@@ -16,6 +16,7 @@ export default function Container(props) {
   const [forecastData, setForecastData] = useState();
   const [sunsetTime, setSunsetTime] = useState("");
   const [sunriseTime, setSunriseTime] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (location) {
@@ -54,6 +55,7 @@ export default function Container(props) {
       localSunriseSplit[0] = parseInt(localSunriseSplit[0]);
       const localSunriseParsed = localSunriseSplit.join(":");
       setSunriseTime(localSunriseParsed);
+      setIsLoading(false);
     }
   }, [weatherData]);
 
@@ -67,6 +69,7 @@ export default function Container(props) {
   // uses navigator.geolocation to get user coords, calls updateLocation with the returned coords
   const getLocation = async () => {
     if (navigator.geolocation) {
+      setIsLoading(true);
       navigator.geolocation.getCurrentPosition(updateLocation);
     } else {
       alert("Geolocation is not supported by this browser.");
@@ -76,6 +79,7 @@ export default function Container(props) {
   //   calls getCustomLocation to turn userinput (string) into coords that can be used by API
   const useCustomLocation = (event) => {
     event.preventDefault();
+    setIsLoading(true);
     getCustomLocation(userInput, setLocation);
   };
 
@@ -122,6 +126,7 @@ export default function Container(props) {
         useCustomLocation={useCustomLocation}
         userInput={userInput}
         handleUserInput={handleUserInput}
+        isLoading={isLoading}
       />
     );
   }

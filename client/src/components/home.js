@@ -14,7 +14,7 @@ return (
             icon={faHatWizard}
             className="text-blue-800 absolute top-5 right-5 fa-3x"
           ></FontAwesomeIcon>
-          {isLoading?<div>loading</div>: <div></div>}
+          {isLoading?<div className="text-blue-800">Loading...</div>: <div></div>}
         </div>
 
         <br />
