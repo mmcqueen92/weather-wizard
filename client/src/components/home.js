@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faLocationCrosshairs,
     faHatWizard,
+    faSpinner,
   } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home(props) {
@@ -14,7 +15,10 @@ return (
             icon={faHatWizard}
             className="text-blue-800 absolute top-5 right-5 fa-3x"
           ></FontAwesomeIcon>
-          {isLoading?<div className="text-blue-800">Loading...</div>: <div></div>}
+          {isLoading?<div className="flex flex-col text-blue-800"><FontAwesomeIcon
+            icon={faSpinner}
+            className=""
+          ></FontAwesomeIcon>Loading...</div>: <div></div>}
         </div>
 
         <br />
