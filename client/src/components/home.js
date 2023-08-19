@@ -15,10 +15,10 @@ return (
             icon={faHatWizard}
             className="text-blue-800 absolute top-5 right-5 fa-3x"
           ></FontAwesomeIcon>
-          {isLoading?<div className="flex flex-col text-blue-800"><FontAwesomeIcon
+          {isLoading?<FontAwesomeIcon
             icon={faSpinner}
             className=""
-          ></FontAwesomeIcon>Loading...</div>: <div></div>}
+          ></FontAwesomeIcon>: <div></div>}
         </div>
 
         <br />
