@@ -17,7 +17,7 @@ return (
           ></FontAwesomeIcon>
           {isLoading?<FontAwesomeIcon
             icon={faSpinner}
-            className=""
+            className="text-blue-800"
           ></FontAwesomeIcon>: <div></div>}
         </div>
 
