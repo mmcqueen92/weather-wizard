@@ -10,7 +10,7 @@ const {getLocation, useCustomLocation, userInput, handleUserInput, isLoading } =
 return (
     <div className="border-4 border-blue-800 rounded-md max-w-md mx-auto bg-blue-300 p-2">
         <div className="relative">
-          <h3 className="text-blue-800 font-bold">Weather-Wizard</h3>
+          <h3 className="text-blue-800 font-bold text-xl">Weather-Wizard</h3>
           <FontAwesomeIcon
             icon={faHatWizard}
             className="text-blue-800 absolute top-5 right-5 fa-3x"
